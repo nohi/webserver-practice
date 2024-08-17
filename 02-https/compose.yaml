@@ -1,0 +1,15 @@
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx-lesson02
+    ports:
+      - "60002:443"
+    volumes:
+      # バーチャルホスト毎の設定
+      - ./etc/nginx/conf.d:/etc/nginx/conf.d
+
+      # ssl証明書
+      - ./etc/nginx/ssl:/etc/nginx/ssl
+
+      #### WEBサーバーでの公開ファイル ####
+      - ./var/www:/var/www

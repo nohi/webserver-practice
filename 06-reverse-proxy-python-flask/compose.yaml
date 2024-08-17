@@ -1,0 +1,18 @@
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx-lesson06
+    ports:
+      - "60006:80"
+    volumes:
+      - ./etc/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./etc/nginx/conf.d:/etc/nginx/conf.d
+      - ./var/www:/var/www
+    depends_on:
+      - python-uwsgi
+
+  python-uwsgi:
+    build: ./flask
+    container_name: flask-lesson06
+    volumes:
+      - ./flask:/var/www/flask

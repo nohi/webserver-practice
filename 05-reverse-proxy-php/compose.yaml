@@ -1,0 +1,18 @@
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx-lesson05
+    ports:
+      - "60005:80"
+    volumes:
+      - ./etc/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./etc/nginx/conf.d:/etc/nginx/conf.d
+      - ./var/www:/var/www
+    depends_on:
+      - php-fpm
+
+  php-fpm:
+    image: php:8.4-rc-fpm-alpine
+    container_name: php-lesson05
+    volumes:
+      - ./var/www/html:/var/www/html
