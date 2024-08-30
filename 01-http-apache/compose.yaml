@@ -1,0 +1,12 @@
+services:
+  apache:
+    image: httpd:latest
+    container_name: apache-lesson01
+    ports:
+      - "60001:80"
+    volumes:
+    #   # apacheの設定.
+      - ./etc/httpd/conf/httpd.conf:/usr/local/apache2/conf/httpd.conf
+
+      #### WEBサーバーでの公開ファイル ####
+      - ./var/www/html:/usr/local/apache2/htdocs
