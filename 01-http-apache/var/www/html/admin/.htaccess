@@ -1,0 +1,6 @@
+# このフォルダではBasic認証を行う
+AuthUserFile /usr/local/apache2/htdocs/admin/.htpasswd
+AuthGroupFile /dev/null
+AuthName "Please enter your id and password"
+AuthType Basic
+require valid-user
